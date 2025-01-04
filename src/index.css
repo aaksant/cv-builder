@@ -1,0 +1,77 @@
+:root {
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
+  --black: #222;
+  --white: #fff;
+  --red-light: #f8d7da;
+  --red-dark: #842029;
+  --green-light: #d1e7dd;
+  --green-dark: #0f5132;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans', serif;
+}
+
+body {
+  background-color: var(--grey-100);
+}
+
+h1 {
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.5em;
+  text-transform: capitalize;
+}
+
+h3 {
+  font-size: 1.17em;
+  text-transform: capitalize;
+}
+
+h4 {
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+h5 {
+  font-size: 0.83em;
+  text-transform: capitalize;
+}
+
+h6 {
+  font-size: 0.67em;
+  text-transform: capitalize;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+}
