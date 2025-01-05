@@ -10,11 +10,8 @@ export default function Form({ title, fields }) {
   }
 
   return (
-    <div
-      className={`form ${isFormShown ? 'active' : ''}`}
-      onClick={handleFormDropdown}
-    >
-      <div className="form__header">
+    <div className={`form ${isFormShown ? 'active' : ''}`}>
+      <div className="form__header" onClick={handleFormDropdown}>
         <h2>{title}</h2>
         <button
           type="button"
