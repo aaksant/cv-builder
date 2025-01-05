@@ -72,7 +72,8 @@ h6 {
   text-transform: capitalize;
 }
 
-.btn {
+button {
   cursor: pointer;
+  background: none;
   border: none;
 }
