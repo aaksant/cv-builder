@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.5rem;
+  gap: 3rem;
+}
+
+.p-bold {
+  font-weight: bolder;
+  color: var(--grey-900);
+}
+
+.p-light {
+  color: var(--grey-500);
+}
+
+.span-light-italic {
+  display: block;
+  color: var(--grey-500);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
