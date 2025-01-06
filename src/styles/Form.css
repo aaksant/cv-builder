@@ -4,7 +4,7 @@ label {
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: var(--grey-500);
+  color: var(--grey-700);
 }
 
 input {
@@ -13,6 +13,18 @@ input {
   border-radius: 0.25rem;
   border: 1px solid var(--grey-200);
   background-color: var(--grey-100);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 2px var(--blue-100);
+  background-color: var(--white);
+}
+
+input:hover:not(:focus) {
+  border-color: var(--grey-300);
+  background-color: var(--grey-50);
 }
 
 .forms-container {
@@ -69,4 +81,35 @@ input {
 
 .form.active .form__dropdown-button {
   transform: rotate(180deg);
+}
+
+.form-control {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-control .btn {
+  color: var(--grey-50);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.btn.submit {
+  background-color: var(--blue-700);
+}
+
+.btn.cancel {
+  background-color: var(--red);
+}
+
+.btn.submit:hover {
+  background-color: var(--blue-800);
+}
+
+.btn.cancel:hover {
+  background-color: var(--red-dark);
 }
