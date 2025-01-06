@@ -22,10 +22,8 @@
   --grey-900: #0f172a;
   --black: #222;
   --white: #fff;
-  --red-light: #f8d7da;
-  --red-dark: #842029;
-  --green-light: #d1e7dd;
-  --green-dark: #0f5132;
+  --red: #ef4444;
+  --red-dark: #dc2626;
 }
 
 *,
@@ -72,7 +70,7 @@ h6 {
   text-transform: capitalize;
 }
 
-button {
+.btn {
   cursor: pointer;
   background: none;
   border: none;
