@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
-import Button from './Button';
+import FormControlButton from './Button';
 import '../../styles/Form.css';
 
 export default function MultipleEntriesForm({ title, fields }) {
@@ -45,12 +45,12 @@ export default function MultipleEntriesForm({ title, fields }) {
             </div>
           ))}
           <div className="form-control">
-            <Button
+            <FormControlButton
               className="cancel"
               text="Cancel"
               onClick={() => setEntries([])}
             />
-            <Button className="submit" text="Submit" type="submit" />
+            <FormControlButton className="submit" text="Submit" type="submit" />
           </div>
         </form>
       )}
