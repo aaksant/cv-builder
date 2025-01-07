@@ -1,6 +1,6 @@
 const formsConfig = [
   {
-    id: crypto.randomUUID(),
+    id: 1,
     state: 'object',
     title: 'Personal Details',
     fields: [
@@ -29,7 +29,7 @@ const formsConfig = [
     ]
   },
   {
-    id: crypto.randomUUID(),
+    id: 2,
     state: 'array',
     title: 'Educations',
     fields: [
