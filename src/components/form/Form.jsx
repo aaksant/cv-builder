@@ -3,41 +3,38 @@ import { SlArrowDown } from 'react-icons/sl';
 import Button from './Button';
 import '../../styles/Form.css';
 
-export default function Form({ title, fields }) {
+export default function SingleEntryForm({ title, fields }) {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(null);
 
-  function handleFormDropdown() {
+  function toggleDropdown() {
     setIsFormShown(!isFormShown);
   }
 
   function handleOnChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(e) {
+  function handleOnSubmit(e) {
     e.preventDefault();
-    // preview stuffs here
+    console.log(formData);
   }
 
-  function handleCancel() {
-    setFormData({});
-  }
-  
   return (
     <div className={`form ${isFormShown ? 'active' : ''}`}>
-      <div className="form__header" onClick={handleFormDropdown}>
+      <div className="form__header" onClick={toggleDropdown}>
         <h2>{title}</h2>
         <button
           type="button"
           className="btn form__dropdown-button"
-          onClick={handleFormDropdown}
+          onClick={toggleDropdown}
         >
           <SlArrowDown className="icon" />
         </button>
       </div>
       {isFormShown && (
-        <form action="/" onSubmit={handleSubmit}>
+        <form action="/" onSubmit={handleOnSubmit}>
           {fields.map(({ label, type, name, id, isRequired }, index) => (
             <div className="form-row" key={index}>
               <label htmlFor={name}>{label}</label>
@@ -46,13 +43,17 @@ export default function Form({ title, fields }) {
                 name={name}
                 id={id}
                 required={isRequired}
-                value={formData[name] || ''}
+                value={formData?.[name] || ''}
                 onChange={handleOnChange}
               />
             </div>
           ))}
           <div className="form-control">
-            <Button className="cancel" text="Cancel" onClick={handleCancel} />
+            <Button
+              className="cancel"
+              text="Cancel"
+              onClick={() => setFormData(null)}
+            />
             <Button className="submit" text="Submit" type="submit" />
           </div>
         </form>
