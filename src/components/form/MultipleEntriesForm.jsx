@@ -48,7 +48,7 @@ export default function MultipleEntriesForm({ title, fields }) {
             <Button
               className="cancel"
               text="Cancel"
-              onClick={() => setEntries(null)}
+              onClick={() => setEntries([])}
             />
             <Button className="submit" text="Submit" type="submit" />
           </div>
