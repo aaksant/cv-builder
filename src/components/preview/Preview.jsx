@@ -1,11 +1,10 @@
 import '../../styles/Preview.css';
+import Header from './Header';
 
-export default function Preview() {
+export default function Preview({ personalDetails }) {
   return (
     <section className="preview-container">
-      <header>
-        <h1></h1>
-      </header>
+      <Header personalDetails={personalDetails} />
       <main></main>
     </section>
   );
