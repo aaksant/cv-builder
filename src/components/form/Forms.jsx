@@ -1,7 +1,7 @@
 import SingleEntryForm from './SingleEntryForm';
 import MultipleEntriesForm from './MultipleEntriesForm';
 import formsConfig from '../../formsConfig';
-import '../../styles/Forms.css';
+import '../../styles/Form.css';
 
 export default function Forms() {
   const objectStateForm = formsConfig.filter((form) => form.state === 'object');
