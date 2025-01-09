@@ -6,16 +6,21 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.preview-container header {
+.header {
   min-height: 13%;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: .875rem;
+  gap: 0.875rem;
   padding: 0 3rem;
   border-right: 50px solid var(--blue-950);
   background-color: var(--grey-100);
+}
+
+.header__sub-header {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .preview-container main {
