@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
-import Button from './Button';
+import FormControlButton from './FormControlButton';
 import '../../styles/Form.css';
 
 export default function SingleEntryForm({ title, fields }) {
-  const [isFormShown, setIsFormShown] = useState(false);
-  const [formData, setFormData] = useState(null);
+  const [isFormShown, setIsFormShown] = useState(true);
+  const [personalDetails, setPersonalDetails] = useState(null);
 
   function toggleDropdown() {
     setIsFormShown(!isFormShown);
@@ -13,12 +13,11 @@ export default function SingleEntryForm({ title, fields }) {
 
   function handleOnChange(e) {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setPersonalDetails({ ...personalDetails, [name]: value });
   }
 
   function handleOnSubmit(e) {
     e.preventDefault();
-    console.log(formData);
   }
 
   return (
@@ -43,18 +42,18 @@ export default function SingleEntryForm({ title, fields }) {
                 name={name}
                 id={id}
                 required={isRequired}
-                value={formData?.[name] || ''}
+                value={personalDetails?.[name] || ''}
                 onChange={handleOnChange}
               />
             </div>
           ))}
           <div className="form-control">
-            <Button
+            <FormControlButton
               className="cancel"
               text="Cancel"
-              onClick={() => setFormData(null)}
+              onClick={() => setPersonalDetails(null)}
             />
-            <Button className="submit" text="Submit" type="submit" />
+            <FormControlButton className="submit" text="Submit" type="submit" />
           </div>
         </form>
       )}
