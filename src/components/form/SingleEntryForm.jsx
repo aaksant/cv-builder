@@ -3,21 +3,29 @@ import { SlArrowDown } from 'react-icons/sl';
 import FormControlButton from './FormControlButton';
 import '../../styles/Form.css';
 
-export default function SingleEntryForm({ title, fields }) {
+export default function SingleEntryForm({
+  personalDetails,
+  setPersonalDetails,
+  title,
+  fields
+}) {
   const [isFormShown, setIsFormShown] = useState(true);
-  const [personalDetails, setPersonalDetails] = useState(null);
 
   function toggleDropdown() {
     setIsFormShown(!isFormShown);
   }
 
-  function handleOnChange(e) {
-    const { name, value } = e.target;
-    setPersonalDetails({ ...personalDetails, [name]: value });
-  }
-
-  function handleOnSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    setPersonalDetails({
+      ...personalDetails,
+      ...Object.fromEntries([...formData.entries()])
+    });
+
+    e.currentTarget.reset();
   }
 
   return (
@@ -33,25 +41,18 @@ export default function SingleEntryForm({ title, fields }) {
         </button>
       </div>
       {isFormShown && (
-        <form action="/" onSubmit={handleOnSubmit}>
+        <form action="/" onSubmit={handleSubmit}>
           {fields.map(({ label, type, name, id, isRequired }, index) => (
             <div className="form-row" key={index}>
               <label htmlFor={name}>{label}</label>
-              <input
-                type={type}
-                name={name}
-                id={id}
-                required={isRequired}
-                value={personalDetails?.[name] || ''}
-                onChange={handleOnChange}
-              />
+              <input type={type} name={name} id={id} required={isRequired} />
             </div>
           ))}
           <div className="form-control">
             <FormControlButton
               className="cancel"
               text="Cancel"
-              onClick={() => setPersonalDetails(null)}
+              onClick={() => setPersonalDetails({})}
             />
             <FormControlButton className="submit" text="Submit" type="submit" />
           </div>
