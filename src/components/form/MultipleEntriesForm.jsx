@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
+import FormRow from './FormRow';
 import FormControlButton from './FormControlButton';
 import NoEntriesPrompt from './NoEntriesPrompt';
 import '../../styles/Form.css';
@@ -49,11 +50,8 @@ export default function MultipleEntriesForm({ title, fields }) {
           <NoEntriesPrompt handleNewEntry={handleNewEntry} />
         ) : (
           <form action="/" onSubmit={handleOnSubmit}>
-            {fields.map(({ label, type, name, id, isRequired }, index) => (
-              <div className="form-row" key={index}>
-                <label htmlFor={name}>{label}</label>
-                <input type={type} name={name} id={id} required={isRequired} />
-              </div>
+            {fields.map((field, index) => (
+              <FormRow {...field} key={index} />
             ))}
             <div className="form-control">
               <FormControlButton
