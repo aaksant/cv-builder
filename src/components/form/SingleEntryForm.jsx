@@ -6,7 +6,7 @@ import '../../styles/Form.css';
 
 export default function SingleEntryForm({
   personalDetails,
-  setPersonalDetails,
+  setCvData,
   title,
   fields
 }) {
@@ -18,15 +18,24 @@ export default function SingleEntryForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
 
-    setPersonalDetails({
-      ...personalDetails,
-      ...Object.fromEntries([...formData.entries()])
-    });
+    setCvData((prevCvData) => ({
+      ...prevCvData,
+      personalDetails: {
+        ...personalDetails,
+        ...Object.fromEntries([...formData.entries()])
+      }
+    }));
 
     e.currentTarget.reset();
+  }
+
+  function handleCancel() {
+    setCvData((prevCvData) => ({
+      ...prevCvData,
+      personalDetails: {}
+    }));
   }
 
   return (
@@ -50,7 +59,7 @@ export default function SingleEntryForm({
             <FormControlButton
               className="cancel"
               text="Cancel"
-              onClick={() => setPersonalDetails({})}
+              onClick={handleCancel}
             />
             <FormControlButton className="submit" text="Submit" type="submit" />
           </div>

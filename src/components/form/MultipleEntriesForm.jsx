@@ -5,9 +5,14 @@ import FormControlButton from './FormControlButton';
 import NoEntriesPrompt from './NoEntriesPrompt';
 import '../../styles/Form.css';
 
-export default function MultipleEntriesForm({ title, fields }) {
+export default function MultipleEntriesForm({
+  entries,
+  setCvData,
+  title,
+  fields,
+  sectionKey
+}) {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [entries, setEntries] = useState([]);
 
   function toggleDropdown() {
     setIsFormShown(!isFormShown);
@@ -18,19 +23,30 @@ export default function MultipleEntriesForm({ title, fields }) {
 
     const newEntry = new FormData(e.currentTarget);
 
-    setEntries([
-      // Remove the temporal object
-      ...entries.slice(1),
-      {
-        id: crypto.randomUUID(),
-        ...Object.fromEntries([...newEntry.entries()])
-      }
-    ]);
+    setCvData((prevCvData) => ({
+      ...prevCvData,
+      [sectionKey]: [
+        ...prevCvData[sectionKey].slice(1),
+        {
+          id: crypto.randomUUID(),
+          ...Object.fromEntries([...newEntry.entries()])
+        }
+      ]
+    }));
   }
 
-  // Add a new temporal object to trigger the form
   function handleNewEntry() {
-    setEntries([...entries, {}]);
+    setCvData((prevCvData) => ({
+      ...prevCvData,
+      [sectionKey]: [...prevCvData[sectionKey], {}]
+    }));
+  }
+
+  function handleCancel() {
+    setCvData((prevCvData) => ({
+      ...prevCvData,
+      [sectionKey]: []
+    }));
   }
 
   return (
@@ -57,7 +73,7 @@ export default function MultipleEntriesForm({ title, fields }) {
               <FormControlButton
                 className="cancel"
                 text="Cancel"
-                onClick={() => setEntries([])}
+                onClick={handleCancel}
               />
               <FormControlButton
                 className="submit"

@@ -3,7 +3,9 @@ import MultipleEntriesForm from './MultipleEntriesForm';
 import formsConfig from '../../formsConfig';
 import '../../styles/Form.css';
 
-export default function Forms({ personalDetails, setPersonalDetails }) {
+export default function Forms({ cvData, setCvData }) {
+  const { personalDetails, educations, experiences } = cvData;
+
   const objectStateForm = formsConfig.filter((form) => form.state === 'object');
   const arrayStateForm = formsConfig.filter((form) => form.state !== 'object');
 
@@ -12,14 +14,21 @@ export default function Forms({ personalDetails, setPersonalDetails }) {
       {objectStateForm.map(({ title, id, fields }) => (
         <SingleEntryForm
           personalDetails={personalDetails}
-          setPersonalDetails={setPersonalDetails}
+          setCvData={setCvData}
           title={title}
           fields={fields}
           key={id}
         />
       ))}
       {arrayStateForm.map(({ title, id, fields }) => (
-        <MultipleEntriesForm id={id} title={title} fields={fields} key={id} />
+        <MultipleEntriesForm
+          entries={title === 'Educations' ? educations : experiences}
+          setCvData={setCvData}
+          title={title}
+          fields={fields}
+          sectionKey={title.toLowerCase()}
+          key={id}
+        />
       ))}
     </section>
   );
