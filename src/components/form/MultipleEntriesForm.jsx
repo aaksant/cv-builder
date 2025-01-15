@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
-import FormRow from './FormRow';
-import FormControlButton from './FormControlButton';
-import NoEntriesPrompt from './NoEntriesPrompt';
+import { produce } from 'immer';
+import NewEntryPrompt from './NewEntryPrompt';
+import Form from './Form';
+import Entries from './Entries';
 import '../../styles/Form.css';
 
 export default function MultipleEntriesForm({
@@ -13,40 +14,41 @@ export default function MultipleEntriesForm({
   sectionKey
 }) {
   const [isFormShown, setIsFormShown] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   function toggleDropdown() {
     setIsFormShown(!isFormShown);
   }
 
-  function handleOnSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
 
-    const newEntry = new FormData(e.currentTarget);
+    setCvData(
+      produce((draft) => {
+        draft[sectionKey].push({
+          ...Object.fromEntries(formData),
+          id: crypto.randomUUID()
+        });
+      })
+    );
 
-    setCvData((prevCvData) => ({
-      ...prevCvData,
-      [sectionKey]: [
-        ...prevCvData[sectionKey].slice(1),
-        {
-          id: crypto.randomUUID(),
-          ...Object.fromEntries([...newEntry.entries()])
-        }
-      ]
-    }));
+    e.currentTarget.reset();
+    setIsEditing(false);
   }
 
   function handleNewEntry() {
-    setCvData((prevCvData) => ({
-      ...prevCvData,
-      [sectionKey]: [...prevCvData[sectionKey], {}]
-    }));
+    setIsEditing(true);
   }
 
   function handleCancel() {
-    setCvData((prevCvData) => ({
-      ...prevCvData,
-      [sectionKey]: []
-    }));
+    setCvData(
+      produce((draft) => {
+        draft[sectionKey] = [...entries];
+      })
+    );
+
+    setIsEditing(false);
   }
 
   return (
@@ -61,28 +63,20 @@ export default function MultipleEntriesForm({
           <SlArrowDown className="icon" />
         </button>
       </div>
-      {isFormShown &&
-        (entries.length === 0 ? (
-          <NoEntriesPrompt handleNewEntry={handleNewEntry} />
-        ) : (
-          <form action="/" onSubmit={handleOnSubmit}>
-            {fields.map((field, index) => (
-              <FormRow {...field} key={index} />
-            ))}
-            <div className="form-control">
-              <FormControlButton
-                className="cancel"
-                text="Cancel"
-                onClick={handleCancel}
-              />
-              <FormControlButton
-                className="submit"
-                text="Submit"
-                type="submit"
-              />
-            </div>
-          </form>
-        ))}
+      {isFormShown && (
+        <div className="form-content">
+          {entries.length > 0 && <Entries entries={entries} />}
+          {isEditing ? (
+            <Form
+              fields={fields}
+              handleSubmit={handleSubmit}
+              handleCancel={handleCancel}
+            />
+          ) : (
+            <NewEntryPrompt entries={entries} handleNewEntry={handleNewEntry} />
+          )}
+        </div>
+      )}
     </div>
   );
 }
