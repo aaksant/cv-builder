@@ -35,6 +35,11 @@ input:hover:not(:focus) {
   gap: 2rem;
 }
 
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .form {
   padding: 1.25rem;
   border-radius: 10px;
@@ -73,8 +78,6 @@ input:hover:not(:focus) {
 }
 
 .form__dropdown-button .icon {
-  width: 1rem;
-  height: 1rem;
   fill: var(--grey-700);
   color: var(--grey-500);
 }
@@ -97,6 +100,64 @@ input:hover:not(:focus) {
   font-weight: 600;
   transition: background-color 0.1s ease-in-out;
 }
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--grey-200);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.entry:hover {
+  background-color: var(--grey-50);
+}
+
+.entry p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--grey-700);
+}
+
+.entry__control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.entry__control .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.entry__control .btn:hover {
+  background-color: var(--grey-100);
+}
+
+.entry__control .btn:active {
+  background-color: var(--grey-200);
+}
+
+.entry__control .btn .icon {
+  color: var(--grey-700);
+}   
 
 .btn.submit {
   background-color: var(--blue-700);
