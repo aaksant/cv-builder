@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
-import FormRow from './FormRow';
-import FormControlButton from './FormControlButton';
+import Form from './Form';
 import '../../styles/Form.css';
 
 export default function SingleEntryForm({
@@ -51,19 +50,11 @@ export default function SingleEntryForm({
         </button>
       </div>
       {isFormShown && (
-        <form action="/" onSubmit={handleSubmit}>
-          {fields.map((field, index) => (
-            <FormRow {...field} key={index} />
-          ))}
-          <div className="form-control">
-            <FormControlButton
-              className="cancel"
-              text="Cancel"
-              onClick={handleCancel}
-            />
-            <FormControlButton className="submit" text="Submit" type="submit" />
-          </div>
-        </form>
+        <Form
+          fields={fields}
+          handleSubmit={handleSubmit}
+          handleCancel={handleCancel}
+        />
       )}
     </div>
   );
