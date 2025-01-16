@@ -3,7 +3,7 @@ export default function NewEntryPrompt({ entries, handleNewEntry }) {
     <div className="message">
       {entries.length === 0 && (
         <p
-          className="p-light"
+          className="text-light"
           style={{ textAlign: 'center', marginBottom: '1rem' }}
         >
           No current entries
