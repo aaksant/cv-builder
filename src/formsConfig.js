@@ -6,50 +6,50 @@ const formsConfig = [
     fields: [
       {
         isInput: true,
+        isRequired: true,
         label: 'Full Name',
         type: 'text',
         name: 'fullName',
-        id: 'fullName',
-        isRequired: true
+        id: 'fullName'
       },
       {
         isInput: true,
+        isRequired: true,
         label: 'Phone Number',
         type: 'tel',
         name: 'phoneNumber',
-        id: 'phoneNumber',
-        isRequired: true
+        id: 'phoneNumber'
       },
       {
         isInput: true,
+        isRequired: false,
         label: 'Email',
         type: 'text',
         name: 'email',
-        id: 'email',
-        isRequired: false
+        id: 'email'
       },
       {
         isInput: true,
+        isRequired: false,
         label: 'LinkedIn Account',
         type: 'text',
         name: 'linkedin',
-        id: 'linkedin',
-        isRequired: false
+        id: 'linkedin'
       },
       {
         isInput: true,
+        isRequired: false,
         label: 'Portfolio Account',
         type: 'text',
         name: 'portfolio',
-        id: 'portfolio',
-        isRequired: false
+        id: 'portfolio'
       },
       {
         isInput: false,
-        label: 'Short Description',
+        isRequired: false,
+        label: 'Your Short Description',
         name: 'shortDescription',
-        id: 'shortDescription',
-        isRequired: false
+        id: 'shortDescription'
       }
     ]
   },
@@ -59,39 +59,91 @@ const formsConfig = [
     title: 'Educations',
     fields: [
       {
+        isInput: true,
+        isRequired: false,
         label: 'University',
         type: 'text',
         name: 'university',
-        id: 'university',
-        isRequired: false
+        id: 'university'
       },
       {
+        isInput: true,
+        isRequired: false,
         label: 'Start Year',
         type: 'text',
         name: 'startYear',
-        id: 'startYear',
-        isRequired: false
+        id: 'startYear'
       },
       {
+        isInput: true,
+        isRequired: false,
         label: 'Graduate Year',
         type: 'text',
         name: 'gradYear',
-        id: 'gradeYear',
-        isRequired: false
+        id: 'gradeYear'
       },
       {
+        isInput: true,
+        isRequired: false,
         label: 'Degree',
         type: 'text',
         name: 'degree',
-        id: 'degree',
-        isRequired: false
+        id: 'degree'
       },
       {
+        isInput: true,
+        isRequired: false,
         label: 'Grade',
         type: 'text',
         name: 'grade',
-        id: 'grade',
-        isRequired: false
+        id: 'grade'
+      }
+    ]
+  },
+  {
+    id: 3,
+    state: 'array',
+    title: 'Experiences',
+    fields: [
+      {
+        isInput: true,
+        isRequired: false,
+        label: 'Company',
+        type: 'text',
+        name: 'company',
+        id: 'company'
+      },
+      {
+        isInput: true,
+        isRequired: false,
+        label: 'Role',
+        type: 'text',
+        name: 'role',
+        id: 'role'
+      },
+      {
+        isInput: true,
+        isRequired: false,
+        label: 'Start Year',
+        type: 'text',
+        name: 'startYearExperience',
+        id: 'startYearExperience'
+      },
+      {
+        isInput: true,
+        isRequired: false,
+        label: 'End Year',
+        type: 'text',
+        name: 'endYear',
+        id: 'endYear'
+      },
+      {
+        isInput: false,
+        isRequired: false,
+        label: 'Job Description',
+        type: 'jobdesc',
+        name: 'jobdesc',
+        id: 'jobdesc'
       }
     ]
   }
