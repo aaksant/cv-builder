@@ -4,7 +4,7 @@ label {
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: var(--grey-700);
+  color: var(--grey-500);
 }
 
 input {
@@ -23,6 +23,30 @@ input:focus {
 }
 
 input:hover:not(:focus) {
+  border-color: var(--grey-300);
+  background-color: var(--grey-50);
+}
+
+textarea {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--grey-200);
+  background-color: var(--grey-100);
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: vertical;
+  min-height: 100px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 2px var(--blue-100);
+  background-color: var(--white);
+}
+
+textarea:hover:not(:focus) {
   border-color: var(--grey-300);
   background-color: var(--grey-50);
 }
@@ -157,7 +181,7 @@ input:hover:not(:focus) {
 
 .entry__control .btn .icon {
   color: var(--grey-700);
-}   
+}
 
 .btn.submit {
   background-color: var(--blue-700);
