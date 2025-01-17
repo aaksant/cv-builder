@@ -5,6 +5,7 @@ const formsConfig = [
     title: 'Personal Details',
     fields: [
       {
+        isInput: true,
         label: 'Full Name',
         type: 'text',
         name: 'fullName',
@@ -12,19 +13,43 @@ const formsConfig = [
         isRequired: true
       },
       {
+        isInput: true,
         label: 'Phone Number',
         type: 'tel',
         name: 'phoneNumber',
         id: 'phoneNumber',
         isRequired: true
       },
-      { label: 'Email', type: 'text', name: 'email', id: 'email' },
       {
-        label: 'Address',
+        isInput: true,
+        label: 'Email',
         type: 'text',
-        name: 'address',
-        id: 'address',
-        isRequired: true
+        name: 'email',
+        id: 'email',
+        isRequired: false
+      },
+      {
+        isInput: true,
+        label: 'LinkedIn Account',
+        type: 'text',
+        name: 'linkedin',
+        id: 'linkedin',
+        isRequired: false
+      },
+      {
+        isInput: true,
+        label: 'Portfolio Account',
+        type: 'text',
+        name: 'portfolio',
+        id: 'portfolio',
+        isRequired: false
+      },
+      {
+        isInput: false,
+        label: 'Short Description',
+        name: 'shortDescription',
+        id: 'shortDescription',
+        isRequired: false
       }
     ]
   },
