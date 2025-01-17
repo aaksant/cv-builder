@@ -51,6 +51,16 @@ export default function MultipleEntriesForm({
     setIsEditing(false);
   }
 
+  function handleRemoveEntry(id) {
+    setCvData(
+      produce((draft) => {
+        draft[sectionKey] = draft[sectionKey].filter(
+          (entry) => entry.id !== id
+        );
+      })
+    );
+  }
+
   return (
     <div className={`form ${isFormShown ? 'active' : ''}`}>
       <div className="form__header" onClick={toggleDropdown}>
@@ -65,7 +75,9 @@ export default function MultipleEntriesForm({
       </div>
       {isFormShown && (
         <div className="form-content">
-          {entries.length > 0 && <Entries entries={entries} />}
+          {entries.length > 0 && (
+            <Entries entries={entries} handleRemoveEntry={handleRemoveEntry} />
+          )}
           {isEditing ? (
             <Form
               fields={fields}
