@@ -7,6 +7,12 @@ label {
   color: var(--grey-500);
 }
 
+label:has(+ input:required):after {
+  content: ' *';
+  color: var(--red);
+  font-weight: bolder;
+}
+
 input {
   width: 100%;
   padding: 0.375rem 0.75rem;
