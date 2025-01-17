@@ -32,7 +32,7 @@
 }
 
 .header p {
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .contact-info__details {
@@ -52,12 +52,21 @@
   margin-bottom: 1.25rem;
 }
 
-.education {
+.preview-entry {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
-.education:not(:last-child) {
+.preview-entry:not(:last-child) {
   margin-bottom: 0.875rem;
+} 
+
+.preview-entry__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.preview-entry__top__grouped {
+  flex: 1;
 }
