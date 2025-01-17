@@ -6,12 +6,12 @@ export default function Education({
   grade
 }) {
   return (
-    <div className="education">
-      <div>
-        <p className="text-bold">{university}</p>
-        <p className="text-light-italic">{`${degree}, GPA: ${grade}`}</p>
-      </div>
-      <div>
+    <div className="preview-entry education">
+      <div className="preview-entry__top">
+        <div className="preview-entry__top__grouped">
+          <p className="text-bold">{university}</p>
+          <p className="text-light-italic">{`${degree}, GPA: ${grade}`}</p>
+        </div>
         <p>{`${startYear}-${gradYear}`}</p>
       </div>
     </div>

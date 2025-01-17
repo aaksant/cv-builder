@@ -2,7 +2,7 @@ import Education from './Education';
 
 export default function Educations({ educations }) {
   return (
-    <section className="educations">
+    <section className="main-content educations">
       {educations.length > 0 && (
         <h3 className="main-content__title">Educations</h3>
       )}
