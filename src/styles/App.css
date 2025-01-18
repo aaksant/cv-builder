@@ -5,6 +5,13 @@
   gap: 3rem;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .text-bold {
   font-weight: bolder;
   color: var(--grey-900);

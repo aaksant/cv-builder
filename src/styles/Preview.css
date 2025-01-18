@@ -59,7 +59,7 @@
 
 .preview-entry:not(:last-child) {
   margin-bottom: 0.875rem;
-} 
+}
 
 .preview-entry__top {
   display: flex;
@@ -69,4 +69,39 @@
 
 .preview-entry__top__grouped {
   flex: 1;
+}
+
+@media (max-width: 768px) {
+  .preview-container {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .header {
+    padding: 1rem;
+    border-right: none;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+  }
+
+  .header p {
+    font-size: 0.75rem;
+  }
+
+  .contact-info__details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .main-content__title {
+    font-size: 1.2em;
+  }
+
+  .preview-entry__top {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

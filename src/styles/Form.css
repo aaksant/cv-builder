@@ -224,3 +224,42 @@ textarea:hover:not(:focus) {
 .btn-new-entry:active {
   background-color: var(--grey-200);
 }
+
+@media (max-width: 768px) {
+  .forms {
+    gap: 1rem;
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .form-control {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .form__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form__dropdown-button {
+    margin-top: 0.5rem;
+  }
+
+  .entries {
+    gap: 0.5rem;
+  }
+
+  .entry {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .entry__control {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
