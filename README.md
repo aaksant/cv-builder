@@ -1,5 +1,7 @@
 # cv-builder
 
+DEMO: https://cv-builder-kwv6xfetw-aaksants-projects.vercel.app/
+
 This is a CV builder application built using React. It allows users to create and manage their CV (Curriculum Vitae) by entering personal details, education history, and work experience. The application provides a form for inputting data and a live preview of the CV.
 
 The inspiration for the layout comes from ATS resume provided by [kinobi](https://app.kinobi.ai/).
@@ -76,3 +78,9 @@ The inspiration for the layout comes from ATS resume provided by [kinobi](https:
     - When the form is submitted, the `handleSubmit` function in `MultipleEntriesForm.jsx` updates the entry in the state.
 
     - Users can delete an entry by clicking the trash icon, which triggers the `handleRemoveEntry` function.
+
+## Future improvements
+- Save and load CV with `localStorage` API.
+- Download as PDF.
+- Insert a profile picture.
+- More responsive design.
