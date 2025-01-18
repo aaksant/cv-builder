@@ -1,6 +1,10 @@
 import Entry from './Entry';
 
-export default function Entries({ entries, handleRemoveEntry }) {
+export default function Entries({
+  entries,
+  handleRemoveEntry,
+  handleEditEntry
+}) {
   return (
     <div className="entries">
       {entries.map((entry) => {
@@ -10,6 +14,7 @@ export default function Entries({ entries, handleRemoveEntry }) {
             name={name}
             key={entry.id}
             handleRemoveEntry={() => handleRemoveEntry(entry.id)}
+            handleEditEntry={() => handleEditEntry(entry.id)}
           />
         );
       })}

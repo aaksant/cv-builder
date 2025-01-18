@@ -14,7 +14,8 @@ export default function MultipleEntriesForm({
   sectionKey
 }) {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isAddingNewEntry, setIsAddingNewEntry] = useState(false);
+  const [editedEntryId, setEditedEntryId] = useState(null);
 
   function toggleDropdown() {
     setIsFormShown(!isFormShown);
@@ -26,19 +27,32 @@ export default function MultipleEntriesForm({
 
     setCvData(
       produce((draft) => {
-        draft[sectionKey].push({
-          ...Object.fromEntries(formData),
-          id: crypto.randomUUID()
-        });
+        if (editedEntryId) {
+          const entryIndex = draft[sectionKey].findIndex(
+            (entry) => entry.id === editedEntryId
+          );
+          
+          draft[sectionKey][entryIndex] = {
+            ...Object.fromEntries(formData),
+            id: editedEntryId
+          };
+        } else {
+          draft[sectionKey].push({
+            ...Object.fromEntries(formData),
+            id: crypto.randomUUID()
+          });
+        }
       })
     );
 
     e.currentTarget.reset();
-    setIsEditing(false);
+    setIsAddingNewEntry(false);
+    setEditedEntryId(null);
   }
 
   function handleNewEntry() {
-    setIsEditing(true);
+    setIsAddingNewEntry(true);
+    setEditedEntryId(null);
   }
 
   function handleCancel() {
@@ -48,7 +62,8 @@ export default function MultipleEntriesForm({
       })
     );
 
-    setIsEditing(false);
+    setIsAddingNewEntry(false);
+    setEditedEntryId(null);
   }
 
   function handleRemoveEntry(id) {
@@ -59,6 +74,15 @@ export default function MultipleEntriesForm({
         );
       })
     );
+  }
+
+  function handleEditEntry(id) {
+    const entryToEdit = entries.find((entry) => entry.id === id);
+    
+    if (entryToEdit) {
+      setIsAddingNewEntry(true);
+      setEditedEntryId(id);
+    }
   }
 
   return (
@@ -76,13 +100,22 @@ export default function MultipleEntriesForm({
       {isFormShown && (
         <div className="form-content">
           {entries.length > 0 && (
-            <Entries entries={entries} handleRemoveEntry={handleRemoveEntry} />
+            <Entries
+              entries={entries}
+              handleRemoveEntry={handleRemoveEntry}
+              handleEditEntry={handleEditEntry}
+            />
           )}
-          {isEditing ? (
+          {isAddingNewEntry ? (
             <Form
               fields={fields}
               handleSubmit={handleSubmit}
               handleCancel={handleCancel}
+              initialData={
+                editedEntryId
+                  ? entries.find((entry) => entry.id === editedEntryId)
+                  : null
+              }
             />
           ) : (
             <NewEntryPrompt entries={entries} handleNewEntry={handleNewEntry} />

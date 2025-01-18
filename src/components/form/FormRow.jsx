@@ -4,15 +4,22 @@ export default function FormRow({
   name,
   type,
   id,
-  isRequired
+  isRequired,
+  defaultValue
 }) {
   return (
     <div className="form-row">
       <label htmlFor={name}>{label}</label>
       {isInput ? (
-        <input type={type} name={name} id={id} required={isRequired} />
+        <input
+          type={type}
+          name={name}
+          id={id}
+          required={isRequired}
+          defaultValue={defaultValue}
+        />
       ) : (
-        <textarea name={name} id={id}></textarea>
+        <textarea name={name} id={id} defaultValue={defaultValue}></textarea>
       )}
     </div>
   );
