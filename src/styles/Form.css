@@ -11,6 +11,7 @@ label:has(+ input:required):after {
   content: ' *';
   color: var(--red);
   font-weight: bolder;
+  font-size: 1rem;
 }
 
 input {
