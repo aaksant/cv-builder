@@ -17,6 +17,8 @@ The inspiration for the layout comes from ATS resume provided by [kinobi](https:
 
 - Edit and Delete: Users can edit or delete existing entries for education and work experience.
 
+- `localStorage`: Data is persisted.
+
 ## Libraries used
 - `React`: The core library used for building the user interface and managing component state.
 
@@ -79,8 +81,10 @@ The inspiration for the layout comes from ATS resume provided by [kinobi](https:
 
     - Users can delete an entry by clicking the trash icon, which triggers the `handleRemoveEntry` function.
 
+5. **Saving the data**
+    - Users data is saved with `localStorage` API in `App.jsx` component. `useEffect` hook is used to save the data every time it changes.
+
 ## Future improvements
-- Save and load CV with `localStorage` API.
 - Download as PDF.
 - Insert a profile picture.
 - More responsive design.
